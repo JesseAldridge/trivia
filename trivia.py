@@ -70,25 +70,27 @@ def ask_question(results):
   else:
     print('Incorrect')
     results.incorrect_count += 1
+  print(results.correct_count, results.incorrect_count)
   print()
 
 def main():
   is_test = 'test' in sys.argv
   results = question_loop(is_test)
   correct_count, incorrect_count = results.correct_count, results.incorrect_count
-  print(f'{correct_count} correct, {incorrect_count} incorrect')
+  print(f'\n{correct_count} correct, {incorrect_count} incorrect')
   print(f'final score: {correct_count - incorrect_count}')
 
   data_path = os.path.expanduser(f'~/trivia_scores{"_test" if is_test else ""}.csv')
   if not os.path.exists(data_path):
     with open(data_path, 'w') as f:
       writer = csv.writer(f)
-      writer.writerow(['datetime', 'correct', 'incorrect'])
+      writer.writerow(['datetime', 'score', 'correct', 'incorrect'])
 
   with open(data_path, 'a') as f:
     writer = csv.writer(f)
     writer.writerow([
       datetime.datetime.now(datetime.timezone.utc).astimezone(),
+      correct_count - incorrect_count,
       correct_count,
       incorrect_count,
     ])
