@@ -16,7 +16,7 @@ def question_loop(is_test):
   def interrupted(signum, frame):
     raise TimeUpException()
   signal.signal(signal.SIGALRM, interrupted)
-  signal.alarm(5 if is_test else 5 * 60)
+  signal.alarm(5 if is_test else 3 * 60)
 
   results = Results()
   while True:
