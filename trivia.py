@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import html, random, signal, sys, os, csv, datetime
 
 import requests
@@ -47,7 +48,8 @@ def ask_question(results):
   raw_question_str = question_dict['question']
   clean_question_str = html.unescape(raw_question_str)
   correct_answer = html.unescape(question_dict['correct_answer'])
-  choices = [correct_answer] + html.unescape(question_dict['incorrect_answers'])
+  incorrect_count = [html.unescape(s) for s in question_dict['incorrect_answers']]
+  choices = [correct_answer] + incorrect_answers
   random.shuffle(choices)
 
   print(clean_question_str)
