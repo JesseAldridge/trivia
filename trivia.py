@@ -48,7 +48,7 @@ def ask_question(results):
   raw_question_str = question_dict['question']
   clean_question_str = html.unescape(raw_question_str)
   correct_answer = html.unescape(question_dict['correct_answer'])
-  incorrect_count = [html.unescape(s) for s in question_dict['incorrect_answers']]
+  incorrect_answers = [html.unescape(s) for s in question_dict['incorrect_answers']]
   choices = [correct_answer] + incorrect_answers
   random.shuffle(choices)
 
