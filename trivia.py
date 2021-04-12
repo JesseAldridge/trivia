@@ -3,6 +3,8 @@ import html, random, signal, sys, os, csv, datetime
 
 import requests
 
+# changed from 5 -> 3 minutes on 4/20/21; first test the next day
+
 
 def question_loop(is_test):
   class Results:
