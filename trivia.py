@@ -99,5 +99,7 @@ def main():
       incorrect_count,
     ])
 
+  print('result written to:', data_path)
+
 if __name__ == '__main__':
   main()
